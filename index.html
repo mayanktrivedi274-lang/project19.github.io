@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09091b">
+  <meta name="description" content="A little universe made for one special birthday.">
+  <title>Project 19 ✦</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Caveat:wght@500&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <canvas id="petals" aria-hidden="true"></canvas>
+  <canvas id="starfield" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <main>
+    <section class="screen active" id="screen-boot" aria-label="Terminal">
+      <div class="boot-wrap"><div class="terminal">
+        <div class="terminal-bar"><span></span><span></span><span></span><small>project19.exe</small></div>
+        <div class="terminal-lines" id="terminal-lines" aria-live="polite"></div>
+        <div class="term-input" id="term-input" hidden><span>&gt;</span><input id="name-in" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="your name"></div>
+        <div class="terminal-status"><span class="status-dot"></span><span id="boot-status">Waiting for input...</span></div>
+      </div></div>
+    </section>
+
+    <section class="screen" id="screen-reveal" aria-labelledby="reveal-title">
+      <div class="section-nav"><span>PROJECT_19</span><span>CHAPTER 01 <i>✦</i></span></div>
+      <div class="reveal-content">
+        <div class="photo-orbit" id="photo-orbit">
+          <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+          <div class="orbit-dot dot-a"></div><div class="orbit-dot dot-b"></div>
+          <div class="wreath" id="wreath"></div>
+          <div class="portrait-frame">
+            <img id="hero-photo" src="assets/portrait.jpg" alt="Prathna">
+            <div class="photo-placeholder" id="photo-placeholder">
+              <span class="placeholder-star">✧</span>
+              <span>Add her photo</span>
+              <small>assets/her-photo.jpg</small>
+            </div>
+          </div>
+          <span class="floating-heart heart-a">♡</span><span class="floating-heart heart-b">✦</span>
+        </div>
+        <p class="eyebrow">In My Way Of Wishing...</p>
+        <h2 id="reveal-title"><span class="w" style="--w:0">Happy</span> <span class="w" style="--w:1">Birthday,</span><br><span class="w" style="--w:2"><em id="her-name-display">Prathna</em></span><span class="title-period">.</span></h2>
+        <p class="reveal-description">Enjoy your day to the fullest....</p>
+        <div class="age-card"><p class="eyebrow">TIME ON THIS PLANET</p><div class="ring"><svg viewBox="0 0 100 100"><circle class="rb" cx="50" cy="50" r="44"/><circle class="rf" id="ring-f" cx="50" cy="50" r="44" pathLength="100"/></svg><div class="rt"><b id="ring-t">0%</b><small id="ring-c"></small></div></div><div class="age-grid" id="age-grid"></div>
+        <p class="age-note">Counted from 19 Oct 2006, 00:00. Mayank doesn't know the exact time you were born, or this would have been far more personal. It keeps running while you read.</p></div>
+        <p class="hand">Twenty already suits you.</p>
+        <button class="text-button" data-next="screen-wishes">Let's explore <span>↓</span></button>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-wishes" aria-labelledby="wishes-title">
+      <div class="section-nav"><span>PROJECT_19</span><span>CHAPTER 02 <i>✦</i></span></div>
+      <div class="section-heading">
+        <p class="eyebrow">THREE LITTLE THINGS</p>
+        <h2 id="wishes-title">Make a wish <em>upon a star.</em></h2>
+        <p>Tap each star. There's a little wish waiting inside.</p>
+      </div>
+      <div class="wish-grid">
+        <button class="wish-card" data-wish="happiness" aria-expanded="false">
+          <span class="wish-star">✦</span><span class="wish-label">Happiness</span><span class="wish-hint">tap to reveal</span>
+          <span class="wish-message">May joy find you in the little moments, not just the big milestones.</span>
+        </button>
+        <button class="wish-card" data-wish="success" aria-expanded="false">
+          <span class="wish-star">✧</span><span class="wish-label">Big dreams</span><span class="wish-hint">tap to reveal</span>
+          <span class="wish-message">May the things you're working toward come closer, one brave step at a time.</span>
+        </button>
+        <button class="wish-card" data-wish="people" aria-expanded="false">
+          <span class="wish-star">✦</span><span class="wish-label">Good people</span><span class="wish-hint">tap to reveal</span>
+          <span class="wish-message">May you always find people who make life feel lighter and more beautiful(like me ofc).</span>
+        </button>
+      </div>
+      <p class="wish-progress" id="wish-progress" aria-live="polite">0 / 3 wishes discovered</p>
+      <button class="primary-button" id="continue-wishes" disabled>Unlock the next little thing <span class="button-arrow">↗</span></button>
+    </section>
+
+    <section class="screen" id="screen-gallery" aria-labelledby="gallery-title">
+      <div class="section-nav"><span>PROJECT_19</span><span>CHAPTER 03 <i>✦</i></span></div>
+      <div class="gallery-layout">
+        <div class="gallery-copy">
+          <p class="eyebrow">A LITTLE MOMENT, HELD STILL</p>
+          <h2 id="gallery-title">A picture can hold a <em>lot of memories.</em></h2>
+          <p>Uus Din tum bht beautifull lag rahi thi sahi mai... 2-3 aur photos le lena chahiye tha tumhare saath.</p>
+          <div class="gallery-caption"><span class="caption-star">✦</span><span id="photo-caption">A little moment, just because.</span></div>
+          <button class="text-button" data-next="screen-garden">One more thing <span>↓</span></button>
+        </div>
+        <div class="scrapbook">
+          <div class="tape"></div>
+          <div class="scrap-photo">
+            <img id="gallery-photo" src="assets/us.jpg" alt="Prathna and Mayank">
+            <div class="scrap-placeholder">Your chosen photo<br><small>assets/her-photo.jpg</small></div>
+          </div>
+          <div class="scrap-note" id="scrap-note">A little star<br>in this big universe ♡</div>
+          <span class="scrap-sparkle sparkle-one">✧</span><span class="scrap-sparkle sparkle-two">✦</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-garden" aria-labelledby="garden-title">
+      <div class="section-nav"><span>PROJECT_19</span><span>CHAPTER 04 <i>✦</i></span></div>
+      <div class="garden-wrap"><p class="eyebrow">A SMALL GARDEN, Cozz Madam ko original flowers se to allergy hai, SO DIGITAL FLOWERS FOR YOU</p><h2 id="garden-title">Touch a flower, <em>see what blooms.</em></h2>
+        <p class="garden-hint" id="garden-hint">0 / 18 bloomed</p><div class="garden" id="garden"></div>
+        <button class="primary-button" data-next="screen-letter">Continue <span class="button-arrow">↗</span></button></div>
+    </section>
+
+    <section class="screen" id="screen-letter" aria-labelledby="letter-title">
+      <div class="section-nav"><span>PROJECT_19</span><span>CHAPTER 05 <i>✦</i></span></div>
+      <div class="letter-wrap">
+        <div class="letter-decoration" aria-hidden="true">✧</div>
+        <p class="eyebrow">A NOTE FROM MAYANK</p>
+        <h2 id="letter-title">A few words, <em>from me to you.</em></h2>
+        <div class="letter-paper">
+          <div class="paper-top"><span>FOR YOUR BIRTHDAY</span><span>19 · 10</span></div>
+          <div id="personal-letter" class="personal-letter">[Write your own message here in script.js. This is your moment, so make it sound like you.]</div>
+          <div class="letter-signoff">— Mayank <span>♡</span></div>
+        </div>
+        <p class="end-line" id="end-line">Happy birthday, Prathna.</p>
+        <button class="text-button" id="replay-button" hidden>↺ Experience it again</button>
+      </div>
+    </section>
+
+    </main>
+
+    <div id="cine" aria-hidden="true"><img src="assets/portrait.jpg" alt="Prathna"><div class="sweep"></div><canvas id="dust"></canvas>
+    <div class="cine-text"><p class="eyebrow">19 · 10 · 2026</p><h2>Happy Birthday,<br><em>Prathna</em><span class="title-period">.</span></h2><button class="primary-button" id="cine-go">Step inside <span class="button-arrow">↓</span></button></div></div>
+  <div id="flash"></div><canvas id="fx"></canvas><div id="wish"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
